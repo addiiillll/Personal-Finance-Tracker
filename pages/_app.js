@@ -2,9 +2,11 @@ import '../styles/globals.css';
 import { Provider } from 'react-redux';
 import { store } from '@/store/store';
 import Head from 'next/head';
+import { SessionProvider } from 'next-auth/react';
 
 function MyApp({ Component, pageProps }) {
   return (
+    <SessionProvider>
     <Provider store={store}>
       <Head>
         <title>Finance Tracker</title>
@@ -14,6 +16,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Component {...pageProps} />
     </Provider>
+    </SessionProvider>
   );
 }
 
